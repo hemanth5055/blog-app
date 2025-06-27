@@ -1,7 +1,11 @@
 import React from "react";
 import Item from "./_comps/Item";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
-const Home = () => {
+const Home = async () => {
+  const session = await auth();
+  if (!session) redirect("/signin");
   return (
     <div className="w-full flex flex-col gap-4 px-6">
       {/* heading */}
