@@ -29,7 +29,7 @@ const Item = ({ canDelete }: { canDelete: boolean }) => {
         )}
       </div>
       {/* line */}
-      <div className="w-[100%] h-[2px] bg-gray-300"></div>
+      <div className="w-[100%] h-[2px] bg-gray-300 dark:bg-gray-500"></div>
     </div>
   );
 };
