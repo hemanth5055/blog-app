@@ -30,7 +30,7 @@ const Home = async () => {
         ) : (
           blogs.map((item) => (
             <Item
-              key={item.id} // ✅ Correct: key on the outer component
+              key={item.id}
               canDelete={false}
               name={item.name}
               id={item.id}

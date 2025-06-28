@@ -1,6 +1,8 @@
 import React from "react";
 import { LuPenLine } from "react-icons/lu";
 import { HiOutlineNewspaper } from "react-icons/hi2";
+import { RiHomeLine } from "react-icons/ri";
+
 import Link from "next/link";
 import { auth, signOut } from "@/auth";
 import { FiLogOut } from "react-icons/fi";
@@ -14,6 +16,11 @@ const Navbar = async () => {
   }
   return (
     <div className="w-full flex z-50 relative items-center justify-end  py-3 px-4 gap-4">
+      <Link href="/">
+        <div className="w-[50px] h-[50px] hover:bg-[#e2e1e1] dark:hover:bg-[#171717] rounded-full flex justify-center items-center cursor-pointer">
+          <RiHomeLine size={20}></RiHomeLine>
+        </div>
+      </Link>
       <Link href="/create">
         <div className="w-[50px] h-[50px] hover:bg-[#e2e1e1] dark:hover:bg-[#171717] rounded-full flex justify-center items-center cursor-pointer">
           <LuPenLine size={20}></LuPenLine>

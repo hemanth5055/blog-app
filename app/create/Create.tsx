@@ -1,4 +1,3 @@
-// app/create/CreateClient.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -12,11 +11,14 @@ const CreateBlog = () => {
   const { data: session } = useSession();
   const userId = session?.user?.id;
   const [content, setContent] = useState({});
+  const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
 
   const handleSubmit = async () => {
+    setLoading(true);
     if (!userId || !title || !content) {
       console.log("All fields are required.");
+      setLoading(false);
       return;
     }
 
@@ -29,16 +31,26 @@ const CreateBlog = () => {
       if (!data?.success) {
         console.log(data.error);
       } else {
-        router.push(`/blog/${data.blogId}`); // updated path
+        router.push(`/blog/${data.blogId}`);
       }
     } catch (error) {
       console.error("Error posting blog:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="w-full flex flex-col gap-4 px-6">
-      <div className="w-full flex flex-col relative bottom-[50px] ">
+    <div className="relative w-full flex flex-col gap-4 px-6">
+      {/* Spinner Overlay */}
+      {loading && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm">
+          <div className="w-12 h-12 border-4 border-t-transparent border-blue-500 rounded-full animate-spin" />
+        </div>
+      )}
+
+      {/* Page Content */}
+      <div className="w-full flex flex-col relative bottom-[50px]">
         <h1 className="font-mont dark:text-[#E5E5E5] text-[54px] font-medium tracking-[-0.055em]">
           Create a Blog
         </h1>
