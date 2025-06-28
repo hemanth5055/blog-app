@@ -6,6 +6,7 @@ import { RiHomeLine } from "react-icons/ri";
 import Link from "next/link";
 import { auth, signOut } from "@/auth";
 import { FiLogOut } from "react-icons/fi";
+import Image from "next/image";
 
 const Navbar = async () => {
   const session = await auth();
@@ -51,12 +52,12 @@ const Navbar = async () => {
         </button>
       </form>
       <div className="w-[40px] h-[40px] max-sm:w-[35px] max-sm:h-[35px] rounded-full">
-        <img
+        <Image
           src={session.user.image}
           referrerPolicy="no-referrer"
           alt="user profile"
           className="w-full h-full rounded-full"
-        />
+        ></Image>
       </div>
     </div>
   );

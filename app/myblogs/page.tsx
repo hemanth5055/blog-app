@@ -8,7 +8,19 @@ import { getSession } from "next-auth/react";
 
 const Myblogs = () => {
   const router = useRouter();
-  const [blogs, setBlogs] = useState<any[]>([]);
+  type Blog = {
+    id: string;
+    name: string;
+    views: number;
+    updatedAt: string;
+    user: {
+      id: string;
+      name?: string;
+      image?: string;
+    };
+  };
+
+  const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -53,7 +65,7 @@ const Myblogs = () => {
           Your Blogs
         </h1>
         <h4 className="font-mont text-[40px] max-sm:text-[25px] dark:text-[#b0b0b0] relative bottom-[20px] max-sm:bottom-[15px] font-medium tracking-[-0.055em] text-[#CBCBCB]">
-          Everything You've Written
+          Everything You&rsquo;ve Written
         </h4>
       </div>
       {/* Top loading spinner */}

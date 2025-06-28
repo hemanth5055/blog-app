@@ -10,7 +10,7 @@ const CreateBlog = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const userId = session?.user?.id;
-  const [content, setContent] = useState({});
+  const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
 

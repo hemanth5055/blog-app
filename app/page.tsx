@@ -8,13 +8,12 @@ const Home = async () => {
   const session = await auth();
   if (!session) redirect("/signin");
   const blogs = await allBlogsExceptUser(session.user.id);
-  const dummyFunc = () => {};
   return (
     <div className="w-full flex flex-col gap-4 px-6">
       {/* heading */}
       <div className="w-full flex flex-col">
         <h1 className="font-mont dark:text-[#E5E5E5] text-[64px] max-sm:text-[40px] font-medium tracking-[-0.055em]">
-          See What’s
+          See What&rsquo;s
         </h1>
         <h4 className="font-mont text-[40px] max-sm:text-[25px] dark:text-[#b0b0b0] relative bottom-[20px] max-sm:bottom-[15px] font-medium tracking-[-0.055em]  text-[#CBCBCB]">
           Happening Around
@@ -32,7 +31,9 @@ const Home = async () => {
             <Item
               key={item.id}
               canDelete={false}
-              handleDelete={null}
+              handleDelete={(id: string) => {
+                console.log(id);
+              }}
               name={item.name}
               id={item.id}
               views={item.views}
