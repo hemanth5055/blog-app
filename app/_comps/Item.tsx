@@ -45,9 +45,9 @@ const Item = ({
           <h2 className="font-mont text-[18px] max-sm:text-[13px] dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
             {user.name}
           </h2>
-          <div className="flex items-center">
+          <div className="flex items-center max-sm:hidden">
             <VscEye className="dark:text-[#7f7f7f]"></VscEye>
-            <h2 className="font-mont text-[18px]  px-2 dark:text-[#7f7f7f] max-sm:hidden font-medium tracking-[-0.055em] text-[#4d4d4d]">
+            <h2 className="font-mont text-[18px]  px-2 dark:text-[#7f7f7f]  font-medium tracking-[-0.055em] text-[#4d4d4d]">
               {views}
             </h2>
           </div>

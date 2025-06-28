@@ -1,22 +1,28 @@
 import { prisma } from "@/prisma";
 import { ObjectId } from "mongodb";
 
-export const getBlog = async (id: string) => {
-  // Validate ID
+// Fetch single blog and track unique views
+export const getBlog = async (id: string, viewerId?: string) => {
   if (!ObjectId.isValid(id)) return null;
-
   try {
-    // Increment view count
-    await prisma.blog.update({
-      where: { id },
-      data: {
-        views: {
-          increment: 1,
-        },
-      },
-    });
+    if (viewerId && ObjectId.isValid(viewerId)) {
+      const existing = await prisma.blog.findUnique({
+        where: { id },
+        select: { views: true },
+      });
 
-    // Fetch blog with user data
+      if (existing && !existing.views.includes(viewerId)) {
+        await prisma.blog.update({
+          where: { id },
+          data: {
+            views: {
+              push: viewerId,
+            },
+          },
+        });
+      }
+    }
+
     const blog = await prisma.blog.findUnique({
       where: { id },
       include: {
@@ -30,7 +36,11 @@ export const getBlog = async (id: string) => {
       },
     });
 
-    return blog;
+    if (!blog) return null;
+    return {
+      ...blog,
+      views: blog.views?.length ?? 0,
+    };
   } catch (error) {
     console.error("Error fetching blog:", error);
     return null;
@@ -64,5 +74,8 @@ export const allBlogsExceptUser = async (userId: string) => {
     },
   });
 
-  return blogs;
+  return blogs.map((blog) => ({
+    ...blog,
+    views: blog.views.length,
+  }));
 };

@@ -45,8 +45,8 @@ model Blog {
   name      String
   userId    String   @db.ObjectId
   content   String
-  views     Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  views     String[] @default([])
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

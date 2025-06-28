@@ -3,17 +3,19 @@ import { notFound } from "next/navigation";
 import { VscEye } from "react-icons/vsc";
 
 import React from "react";
+import { auth } from "@/auth";
 
 const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const session = await auth();
   const id = (await params).id;
-  const blog = await getBlog(id);
+  const blog = await getBlog(id, session?.user?.id);
   if (!blog) {
     notFound();
   }
   const blogContent = blog?.content;
 
   return (
-    <div className="w-full flex flex-col gap-5 px-6">
+    <div className="w-full flex flex-col gap-5 px-6 max-sm:px-3">
       <div className="w-full flex flex-col gap-2">
         <h1 className="font-mont text-[40px] max-sm:text-[25px] dark:text-[#E5E5E5] w-[75%] max-sm:w-[100%] leading-[50px] max-sm:leading-[35px] font-medium tracking-[-0.055em]">
           {blog?.name}
@@ -32,10 +34,9 @@ const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
             <h2 className="font-mont text-[18px] max-sm:text-[14px] dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
               {blog?.user?.name}
             </h2>
-            <div className="flex items-center">
+            <div className="flex items-center max-sm:hidden">
               <VscEye className="dark:text-[#7f7f7f]"></VscEye>
-
-              <h2 className="font-mont max-sm:hidden text-[18px] px-2 dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
+              <h2 className="font-mont text-[18px] px-2 dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
                 {blog.views}
               </h2>
             </div>

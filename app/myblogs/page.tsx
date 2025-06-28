@@ -19,7 +19,7 @@ const Myblogs = () => {
         return;
       }
       try {
-        const res = await axios.post("/api/user-blog", {
+        const res = await axios.post("/api/userblogs", {
           userId: session.user.id,
         });
         setBlogs(res.data.blogs);

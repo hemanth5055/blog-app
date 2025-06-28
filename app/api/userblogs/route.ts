@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { ObjectId } from "mongodb"; // or "bson" if you're using that
+import { ObjectId } from "mongodb";
 import { prisma } from "@/prisma";
 
 export async function POST(req: Request) {
@@ -32,7 +32,12 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json({ blogs });
+    const transformedBlogs = blogs.map((blog) => ({
+      ...blog,
+      views: blog.views.length,
+    }));
+
+    return NextResponse.json({ blogs: transformedBlogs });
   } catch (error) {
     console.error("Error fetching blogs:", error);
     return NextResponse.json(

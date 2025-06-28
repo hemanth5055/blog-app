@@ -11,7 +11,13 @@ const Navbar = async () => {
   const session = await auth();
   if (!session) {
     return (
-      <div className="w-full flex z-50 h-[50px] relative items-center justify-end  py-3 px-4 gap-4"></div>
+      <div className="w-full flex z-50 h-[50px] relative items-center justify-end  py-3 px-4 gap-4">
+        <Link href="/signin">
+          <div className="w-[50px] h-[50px] max-sm:w-[45px] max-sm:h-[45px] hover:bg-[#e2e1e1] dark:hover:bg-[#171717] rounded-full flex justify-center items-center cursor-pointer">
+            <RiHomeLine size={20}></RiHomeLine>
+          </div>
+        </Link>
+      </div>
     );
   }
   return (
