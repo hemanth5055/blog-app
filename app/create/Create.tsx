@@ -50,22 +50,22 @@ const CreateBlog = () => {
       )}
 
       {/* Page Content */}
-      <div className="w-full flex flex-col relative bottom-[50px]">
-        <h1 className="font-mont dark:text-[#E5E5E5] text-[54px] font-medium tracking-[-0.055em]">
+      <div className="w-full flex flex-col relative bottom-[50px] max-sm:bottom-0">
+        <h1 className="font-mont dark:text-[#E5E5E5] max-sm:text-[40px]  text-[54px] font-medium tracking-[-0.055em]">
           Create a Blog
         </h1>
-        <h4 className="font-mont dark:text-[#b0b0b0] text-[30px] relative bottom-[20px] font-medium tracking-[-0.055em] text-[#CBCBCB]">
+        <h4 className="font-mont dark:text-[#b0b0b0] max-sm:text-[25px]  max-sm:bottom-[15px] text-[30px] relative bottom-[20px] font-medium tracking-[-0.055em] text-[#CBCBCB]">
           Share Ideas. Inspire Change.
         </h4>
       </div>
-      <div className="w-full flex flex-col gap-4 relative bottom-[50px]">
+      <div className="w-full flex flex-col gap-4 relative bottom-[50px] max-sm:bottom-0">
         <div className="w-full flex justify-between">
           <input
             type="text"
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="outline-none border-b-2 dark:text-[#E5E5E5] border-0 w-[50%] h-[50px] placeholder:text-[#B6B4B4] text-[23px] font-mont font-medium tracking-[-0.055em]"
+            className="outline-none border-b-2 dark:text-[#E5E5E5] border-0 w-[50%] max-sm:w-[80%] h-[50px] placeholder:text-[#B6B4B4] text-[23px] font-mont font-medium tracking-[-0.055em]"
           />
         </div>
         <EditorDemo setContent={setContent} />
@@ -77,6 +77,7 @@ const CreateBlog = () => {
             Post
           </div>
         </div>
+        <div className="w-full h-[20px] hidden max-sm:block"></div>
       </div>
     </div>
   );

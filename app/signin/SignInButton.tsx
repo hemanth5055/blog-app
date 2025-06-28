@@ -10,7 +10,7 @@ const SignInButton = () => {
   return (
     <button
       onClick={handleSignIn}
-      className="flex items-center gap-4 relative top-[350px] bg-[#F5F5F5] dark:bg-[#171717] p-2 px-6 cursor-pointer rounded-[13px]"
+      className="flex items-center gap-4 relative top-[350px] max-sm:top-[300px] bg-[#F5F5F5] dark:bg-[#171717] p-2 px-6 cursor-pointer rounded-[13px]"
     >
       <div className="w-[35px] h-[35px]">
         <img src="/google-icon.png" alt="google-icon" />

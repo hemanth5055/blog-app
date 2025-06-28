@@ -13,7 +13,7 @@ const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
   return (
     <div className="w-full flex flex-col gap-5 px-6">
       <div className="w-full flex flex-col gap-2">
-        <h1 className="font-mont text-[40px] dark:text-[#E5E5E5] w-[75%] leading-[50px] font-medium tracking-[-0.055em]">
+        <h1 className="font-mont text-[40px] max-sm:text-[25px] dark:text-[#E5E5E5] w-[75%] max-sm:w-[100%] leading-[50px] max-sm:leading-[35px] font-medium tracking-[-0.055em]">
           {blog?.name}
         </h1>
 
@@ -27,13 +27,13 @@ const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
                 className="rounded-full h-full w-full"
               />
             </div>
-            <h2 className="font-mont text-[18px] dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
+            <h2 className="font-mont text-[18px] max-sm:text-[14px] dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
               {blog?.user?.name}
             </h2>
-            <h2 className="font-mont text-[18px] px-2 dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
+            <h2 className="font-mont max-sm:hidden text-[18px] px-2 dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
               2 Min Read
             </h2>
-            <h2 className="font-mont text-[18px] px-2 dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
+            <h2 className="font-mont text-[18px] max-sm:text-[14px] px-2 dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
               {new Date(blog.updatedAt).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "short",
@@ -43,11 +43,11 @@ const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
           </div>
         </div>
 
-        <div className="w-[60%] h-[2px] bg-gray-300  dark:bg-gray-500 my-5" />
+        <div className="w-[60%] h-[2px] bg-gray-300  dark:bg-gray-500 my-5 max-sm:my-3" />
 
         {/* Render HTML from backend */}
         <div
-          className="prose prose-lg dark:prose-invert font-mont"
+          className="prose prose-lg dark:prose-invert"
           dangerouslySetInnerHTML={{ __html: blogContent }}
         />
       </div>

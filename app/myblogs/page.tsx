@@ -49,10 +49,10 @@ const Myblogs = () => {
     <div className="w-full flex flex-col gap-4 px-6">
       {/* heading */}
       <div className="w-full flex flex-col">
-        <h1 className="font-mont dark:text-[#E5E5E5] text-[64px] font-medium tracking-[-0.055em]">
+        <h1 className="font-mont max-sm:text-[40px] dark:text-[#E5E5E5] text-[64px] font-medium tracking-[-0.055em]">
           Your Blogs
         </h1>
-        <h4 className="font-mont text-[40px] dark:text-[#b0b0b0] relative bottom-[20px] font-medium tracking-[-0.055em] text-[#CBCBCB]">
+        <h4 className="font-mont text-[40px] max-sm:text-[25px] dark:text-[#b0b0b0] relative bottom-[20px] max-sm:bottom-[15px] font-medium tracking-[-0.055em] text-[#CBCBCB]">
           Everything You've Written
         </h4>
       </div>
