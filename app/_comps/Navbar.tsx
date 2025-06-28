@@ -40,6 +40,7 @@ const Navbar = async () => {
       <div className="w-[40px] h-[40px] rounded-full">
         <img
           src={session.user.image}
+          referrerPolicy="no-referrer"
           alt="user profile"
           className="w-full h-full rounded-full"
         />

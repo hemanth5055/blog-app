@@ -3,11 +3,37 @@
 
 import React, { useState } from "react";
 import EditorDemo from "../_comps/Myeditor";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const CreateBlog = () => {
+  const router = useRouter();
+  const { data: session } = useSession();
+  const userId = session?.user?.id;
   const [content, setContent] = useState({});
-  const handleSubmit = () => {
-    console.log(content); // replace with API call to save blog
+  const [title, setTitle] = useState("");
+
+  const handleSubmit = async () => {
+    if (!userId || !title || !content) {
+      console.log("All fields are required.");
+      return;
+    }
+
+    try {
+      const { data } = await axios.post("/api/addblog", {
+        name: title,
+        content,
+        userId,
+      });
+      if (!data?.success) {
+        console.log(data.error);
+      } else {
+        router.push(`/blog/${data.blogId}`); // updated path
+      }
+    } catch (error) {
+      console.error("Error posting blog:", error);
+    }
   };
 
   return (
@@ -25,6 +51,8 @@ const CreateBlog = () => {
           <input
             type="text"
             placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             className="outline-none border-b-2 dark:text-[#E5E5E5] border-0 w-[50%] h-[50px] placeholder:text-[#B6B4B4] text-[23px] font-mont font-medium tracking-[-0.055em]"
           />
         </div>

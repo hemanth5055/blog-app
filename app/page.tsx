@@ -2,10 +2,12 @@ import React from "react";
 import Item from "./_comps/Item";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+import { allBlogsExceptUser } from "@/actions/crud";
 
 const Home = async () => {
   const session = await auth();
   if (!session) redirect("/signin");
+  const blogs = await allBlogsExceptUser(session.user.id);
   return (
     <div className="w-full flex flex-col gap-4 px-6">
       {/* heading */}
@@ -20,7 +22,25 @@ const Home = async () => {
       {/* blog */}
       <div className="w-full flex flex-col gap-[25px] ">
         {/* blog-items */}
-        <Item canDelete={false}></Item>
+        {blogs.length === 0 ? (
+          <p className="text-lg text-gray-500 font-mont">
+            No blogs yet from others.
+          </p>
+        ) : (
+          blogs.map((item) => (
+            <Item
+              canDelete={false}
+              name={item.name}
+              id={item.id}
+              user={{
+                id: item.user.id,
+                name: item.user.name ?? "Unknown User",
+                image: item.user.image ?? "/google-icon.png",
+              }}
+              key={item.id}
+            />
+          ))
+        )}
       </div>
       <div className="w-full h-[50px]"></div>
     </div>

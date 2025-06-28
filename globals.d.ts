@@ -18,6 +18,11 @@ declare module "next-auth" {
     email: string;
     image: string;
   }
+  interface Blog {
+    id: string;
+    title: string;
+    content: string;
+  }
 }
 
 declare module "next-auth/jwt" {

@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "./_comps/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { SessionProvider } from "next-auth/react";
 
 const mont = Montserrat({
   variable: "--font-mont-sans",
@@ -27,12 +28,14 @@ export default function RootLayout({
       enableSystem
       disableTransitionOnChange
     >
-      <html lang="en">
-        <body className={`${mont.variable} antialiased`}>
-          <Navbar></Navbar>
-          {children}
-        </body>
-      </html>
+      <SessionProvider>
+        <html lang="en">
+          <body className={`${mont.variable} antialiased`}>
+            <Navbar></Navbar>
+            {children}
+          </body>
+        </html>
+      </SessionProvider>
     </ThemeProvider>
   );
 }
