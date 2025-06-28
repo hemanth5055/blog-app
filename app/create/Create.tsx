@@ -44,8 +44,8 @@ const CreateBlog = () => {
     <div className="relative w-full flex flex-col gap-4 px-6">
       {/* Spinner Overlay */}
       {loading && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm">
-          <div className="w-12 h-12 border-4 border-t-transparent border-blue-500 rounded-full animate-spin" />
+        <div className="absolute top-4 right-4 z-50">
+          <div className="w-8 h-8 border-4 border-t-transparent border-blue-500 rounded-full animate-spin" />
         </div>
       )}
 

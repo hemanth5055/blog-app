@@ -57,6 +57,7 @@ const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
           className="prose prose-lg dark:prose-invert"
           dangerouslySetInnerHTML={{ __html: blogContent }}
         />
+        <div className="w-full h-[20px]"></div>
       </div>
     </div>
   );
