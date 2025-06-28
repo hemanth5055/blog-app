@@ -1,5 +1,7 @@
 import { getBlog } from "@/actions/crud";
 import { notFound } from "next/navigation";
+import { VscEye } from "react-icons/vsc";
+
 import React from "react";
 
 const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
@@ -18,7 +20,7 @@ const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
         </h1>
 
         <div className="w-full flex gap-4 items-center justify-between">
-          <div className="flex gap-2 items-center py-2">
+          <div className="flex gap-4 items-center py-2">
             <div className="w-[30px] h-[30px] rounded-full bg-[#D9D9D9]">
               <img
                 src={blog?.user?.image ? blog?.user?.image : ""}
@@ -30,9 +32,13 @@ const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
             <h2 className="font-mont text-[18px] max-sm:text-[14px] dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
               {blog?.user?.name}
             </h2>
-            <h2 className="font-mont max-sm:hidden text-[18px] px-2 dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
-              2 Min Read
-            </h2>
+            <div className="flex items-center">
+              <VscEye className="dark:text-[#7f7f7f]"></VscEye>
+
+              <h2 className="font-mont max-sm:hidden text-[18px] px-2 dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
+                {blog.views}
+              </h2>
+            </div>
             <h2 className="font-mont text-[18px] max-sm:text-[14px] px-2 dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
               {new Date(blog.updatedAt).toLocaleDateString("en-US", {
                 year: "numeric",

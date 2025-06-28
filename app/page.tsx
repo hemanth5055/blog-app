@@ -8,6 +8,7 @@ const Home = async () => {
   const session = await auth();
   if (!session) redirect("/signin");
   const blogs = await allBlogsExceptUser(session.user.id);
+  const dummyFunc = () => {};
   return (
     <div className="w-full flex flex-col gap-4 px-6">
       {/* heading */}
@@ -31,8 +32,10 @@ const Home = async () => {
             <Item
               key={item.id}
               canDelete={false}
+              handleDelete={null}
               name={item.name}
               id={item.id}
+              views={item.views}
               updatedAt={item.updatedAt}
               user={{
                 id: item.user.id,

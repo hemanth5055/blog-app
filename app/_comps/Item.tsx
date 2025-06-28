@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import { VscEye } from "react-icons/vsc";
+
 import { LuTrash2 } from "react-icons/lu";
 import Link from "next/link"; // ⬅️ import Next.js Link
 
@@ -8,6 +10,7 @@ const Item = ({
   name,
   id,
   updatedAt,
+  views,
   handleDelete,
   user,
 }: {
@@ -15,6 +18,7 @@ const Item = ({
   name: string;
   handleDelete: any;
   id: string;
+  views: number;
   updatedAt: Date;
   user: { id: string; name: string; image: string };
 }) => {
@@ -29,7 +33,7 @@ const Item = ({
 
       {/* details */}
       <div className="w-full flex gap-4 items-center justify-between">
-        <div className="flex gap-2 items-center py-2">
+        <div className="flex gap-4 items-center py-2">
           <div className="w-[30px] h-[30px] rounded-full overflow-hidden">
             <img
               src={user.image}
@@ -41,9 +45,13 @@ const Item = ({
           <h2 className="font-mont text-[18px] max-sm:text-[13px] dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
             {user.name}
           </h2>
-          <h2 className="font-mont text-[18px]  px-2 dark:text-[#7f7f7f] max-sm:hidden font-medium tracking-[-0.055em] text-[#4d4d4d]">
-            2 Min Read
-          </h2>
+          <div className="flex items-center">
+            <VscEye className="dark:text-[#7f7f7f]"></VscEye>
+            <h2 className="font-mont text-[18px]  px-2 dark:text-[#7f7f7f] max-sm:hidden font-medium tracking-[-0.055em] text-[#4d4d4d]">
+              {views}
+            </h2>
+          </div>
+
           <h2 className="font-mont text-[18px] px-2 max-sm:text-[12px] dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
             {new Date(updatedAt).toLocaleDateString("en-US", {
               year: "numeric",

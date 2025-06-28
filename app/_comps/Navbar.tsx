@@ -17,17 +17,17 @@ const Navbar = async () => {
   return (
     <div className="w-full flex z-50 relative items-center justify-end  py-3 px-4 gap-4">
       <Link href="/">
-        <div className="w-[50px] h-[50px] hover:bg-[#e2e1e1] dark:hover:bg-[#171717] rounded-full flex justify-center items-center cursor-pointer">
+        <div className="w-[50px] h-[50px] max-sm:w-[45px] max-sm:h-[45px] hover:bg-[#e2e1e1] dark:hover:bg-[#171717] rounded-full flex justify-center items-center cursor-pointer">
           <RiHomeLine size={20}></RiHomeLine>
         </div>
       </Link>
       <Link href="/create">
-        <div className="w-[50px] h-[50px] hover:bg-[#e2e1e1] dark:hover:bg-[#171717] rounded-full flex justify-center items-center cursor-pointer">
+        <div className="w-[50px] h-[50px] max-sm:w-[45px] max-sm:h-[45px] hover:bg-[#e2e1e1] dark:hover:bg-[#171717] rounded-full flex justify-center items-center cursor-pointer">
           <LuPenLine size={20}></LuPenLine>
         </div>
       </Link>
       <Link href="/myblogs">
-        <div className="w-[50px] h-[50px] hover:bg-[#e2e1e1] dark:hover:bg-[#171717] rounded-full flex justify-center items-center cursor-pointer">
+        <div className="w-[50px] h-[50px] max-sm:w-[45px] max-sm:h-[45px] hover:bg-[#e2e1e1] dark:hover:bg-[#171717] rounded-full flex justify-center items-center cursor-pointer">
           <HiOutlineNewspaper size={20}></HiOutlineNewspaper>
         </div>
       </Link>
@@ -38,13 +38,13 @@ const Navbar = async () => {
         }}
       >
         <button
-          className="w-[50px] h-[50px] hover:bg-[#e2e1e1] dark:hover:bg-[#171717] rounded-full flex justify-center items-center cursor-pointer"
+          className="w-[50px] h-[50px] max-sm:w-[45px] max-sm:h-[45px] hover:bg-[#e2e1e1] dark:hover:bg-[#171717] rounded-full flex justify-center items-center cursor-pointer"
           type="submit"
         >
           <FiLogOut size={20}></FiLogOut>
         </button>
       </form>
-      <div className="w-[40px] h-[40px] rounded-full">
+      <div className="w-[40px] h-[40px] max-sm:w-[35px] max-sm:h-[35px] rounded-full">
         <img
           src={session.user.image}
           referrerPolicy="no-referrer"

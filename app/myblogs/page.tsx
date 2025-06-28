@@ -76,6 +76,7 @@ const Myblogs = () => {
               handleDelete={handleDelete}
               canDelete={true}
               name={item.name}
+              views={item.views}
               id={item.id}
               updatedAt={new Date(item.updatedAt)}
               user={{

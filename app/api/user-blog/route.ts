@@ -20,6 +20,7 @@ export async function POST(req: Request) {
       select: {
         id: true,
         name: true,
+        views: true,
         updatedAt: true,
         user: {
           select: {
