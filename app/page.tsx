@@ -31,9 +31,7 @@ const Home = async () => {
             <Item
               key={item.id}
               canDelete={false}
-              handleDelete={(id: string) => {
-                console.log(id);
-              }}
+              handleDelete={null}
               name={item.name}
               id={item.id}
               views={item.views}

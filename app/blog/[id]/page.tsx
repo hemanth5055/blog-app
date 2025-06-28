@@ -24,12 +24,13 @@ const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
 
         <div className="w-full flex gap-4 items-center justify-between">
           <div className="flex gap-4 items-center py-2">
-            <div className="w-[30px] h-[30px] rounded-full bg-[#D9D9D9]">
+            <div className="w-[30px] relative h-[30px] rounded-full bg-[#D9D9D9]">
               <Image
                 src={blog?.user?.image ? blog?.user?.image : ""}
                 alt="user avatar"
                 referrerPolicy="no-referrer"
-                className="rounded-full h-full w-full"
+                className="rounded-full object-cover"
+                fill
               ></Image>
             </div>
             <h2 className="font-mont text-[18px] max-sm:text-[14px] dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">

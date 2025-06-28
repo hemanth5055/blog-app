@@ -51,12 +51,13 @@ const Navbar = async () => {
           <FiLogOut size={20}></FiLogOut>
         </button>
       </form>
-      <div className="w-[40px] h-[40px] max-sm:w-[35px] max-sm:h-[35px] rounded-full">
+      <div className="w-[40px] relative h-[40px] max-sm:w-[35px] max-sm:h-[35px] rounded-full">
         <Image
           src={session.user.image}
           referrerPolicy="no-referrer"
           alt="user profile"
-          className="w-full h-full rounded-full"
+          className="rounded-full object-cover"
+          fill
         ></Image>
       </div>
     </div>

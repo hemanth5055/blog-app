@@ -17,7 +17,7 @@ const Item = ({
 }: {
   canDelete: boolean;
   name: string;
-  handleDelete: (id: string) => void;
+  handleDelete: any;
   id: string;
   views: number;
   updatedAt: Date;
@@ -35,12 +35,13 @@ const Item = ({
       {/* details */}
       <div className="w-full flex gap-4 items-center justify-between">
         <div className="flex gap-4 items-center py-2">
-          <div className="w-[30px] h-[30px] rounded-full overflow-hidden">
+          <div className="w-[30px] relative h-[30px] rounded-full overflow-hidden">
             <Image
               src={user.image}
               alt="user"
               referrerPolicy="no-referrer"
-              className="w-full h-full rounded-full object-cover"
+              className="rounded-full object-cover"
+              fill
             ></Image>
           </div>
           <h2 className="font-mont text-[18px] max-sm:text-[13px] dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
