@@ -7,11 +7,13 @@ const Item = ({
   canDelete,
   name,
   id,
+  updatedAt,
   user,
 }: {
   canDelete: boolean;
   name: string;
   id: string;
+  updatedAt: Date;
   user: { id: string; name: string; image: string };
 }) => {
   return (
@@ -41,7 +43,11 @@ const Item = ({
             2 Min Read
           </h2>
           <h2 className="font-mont text-[18px] px-2 dark:text-[#7f7f7f] font-medium tracking-[-0.055em] text-[#4d4d4d]">
-            25 - June - 2025
+            {new Date(updatedAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
           </h2>
         </div>
         {canDelete && (

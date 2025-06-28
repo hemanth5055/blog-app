@@ -8,6 +8,7 @@ const Home = async () => {
   const session = await auth();
   if (!session) redirect("/signin");
   const blogs = await allBlogsExceptUser(session.user.id);
+  console.log(blogs);
   return (
     <div className="w-full flex flex-col gap-4 px-6">
       {/* heading */}
@@ -29,15 +30,16 @@ const Home = async () => {
         ) : (
           blogs.map((item) => (
             <Item
+              key={item.id} // ✅ Correct: key on the outer component
               canDelete={false}
               name={item.name}
               id={item.id}
+              updatedAt={item.updatedAt}
               user={{
                 id: item.user.id,
                 name: item.user.name ?? "Unknown User",
                 image: item.user.image ?? "/google-icon.png",
               }}
-              key={item.id}
             />
           ))
         )}

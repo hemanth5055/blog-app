@@ -26,7 +26,6 @@ export const allBlogsExceptUser = async (userId: string) => {
     select: {
       id: true,
       name: true,
-      createdAt: true,
       updatedAt: true,
       user: {
         select: {
