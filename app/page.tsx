@@ -8,7 +8,6 @@ const Home = async () => {
   const session = await auth();
   if (!session) redirect("/signin");
   const blogs = await allBlogsExceptUser(session.user.id);
-  console.log(blogs);
   return (
     <div className="w-full flex flex-col gap-4 px-6">
       {/* heading */}

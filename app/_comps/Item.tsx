@@ -1,6 +1,6 @@
+"use client";
 import React from "react";
 import { LuTrash2 } from "react-icons/lu";
-import Image from "next/image";
 import Link from "next/link"; // ⬅️ import Next.js Link
 
 const Item = ({
@@ -8,10 +8,12 @@ const Item = ({
   name,
   id,
   updatedAt,
+  handleDelete,
   user,
 }: {
   canDelete: boolean;
   name: string;
+  handleDelete: any;
   id: string;
   updatedAt: Date;
   user: { id: string; name: string; image: string };
@@ -51,7 +53,12 @@ const Item = ({
           </h2>
         </div>
         {canDelete && (
-          <div className="w-[35px] h-[35px] flex justify-center items-center rounded-full cursor-pointer">
+          <div
+            className="w-[35px] h-[35px] flex justify-center items-center rounded-full cursor-pointer"
+            onClick={() => {
+              handleDelete(id);
+            }}
+          >
             <LuTrash2 size={20} className="hover:text-red-400" />
           </div>
         )}
