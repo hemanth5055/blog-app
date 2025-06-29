@@ -3,6 +3,8 @@ import Item from "./_comps/Item";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { allBlogsExceptUser } from "@/actions/crud";
+import { Metadata } from "next";
+
 
 const Home = async () => {
   const session = await auth();

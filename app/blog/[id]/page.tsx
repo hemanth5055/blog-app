@@ -5,7 +5,30 @@ import { VscEye } from "react-icons/vsc";
 import React from "react";
 import { auth } from "@/auth";
 import Image from "next/image";
+import { Metadata } from "next";
 
+// Dynamic Metadata Generator
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const blog = await getBlog(params.id);
+  if (!blog) {
+    return {
+      title: "Blog not found",
+      description: "This blog post does not exist.",
+    };
+  }
+  const plainText = blog.content?.replace(/<[^>]*>?/gm, "").slice(0, 150) ?? "";
+
+  return {
+    title: {
+      absolute: blog.name,
+    },
+    description: plainText + "...",
+  };
+}
 const Blog = async ({ params }: { params: Promise<{ id: string }> }) => {
   const session = await auth();
   const id = (await params).id;
